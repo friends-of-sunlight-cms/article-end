@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../system/schema/extend.json",
+    "name": "Article End",
+    "description": "Allows you to set the date by which each article should be published.",
+    "authors": [
+        {"name": "Friends of Sunlight CMS", "url": "https://github.com/friends-of-sunlight-cms/"}
+    ],
+    "version": "1.0.0",
+    "environment": {
+        "system": "^8.0"
+    },
+    "installer": "script/db/installer.php",
+    "langs": {
+        "article-end": "lang"
+    },
+    "events": [
+        {"event": "article.filter", "script": "event/article_filter.php"}
+    ],
+    "events.web": [],
+    "events.admin": [
+        {"event": "admin.article.settings.after", "script": "event/admin_articles_edit.php"},
+        {"event": "admin.article.new.before", "script": "event/admin_article_save_before.php"},
+        {"event": "admin.article.edit.before", "script": "event/admin_article_save_before.php"}
+    ]
+}
